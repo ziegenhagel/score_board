@@ -79,7 +79,7 @@ const scrollElement = ref(null);
                 </div>
             </div>
             <div class="col" id="right" ref="scrollElement">
-                <div class="row" v-for="(score, index) in otherScores" :key="score.name">
+                <div class="row" v-for="(score, index) in otherScores" :key="score">
                     <div class="place">{{ index + 8 }}.</div>
                     <div class="name">{{ score.name }}</div>
                     <div class="score">{{ score.score }}</div>
