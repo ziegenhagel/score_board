@@ -11,6 +11,7 @@ const refreshScores = () => {
             console.error(error)
         })
 }
+
 onMounted(() => {
     refreshScores()
     setInterval(refreshScores, 5000)
@@ -46,22 +47,6 @@ const otherScores = computed(() => {
 let scrollDirection = 1;
 let scrollSpeed = 1;  // pixels per second
 const scrollElement = ref(null);
-// const scrollTick = () => {
-//     if (!scrollElement.value) return;
-//
-//     // Scroll the element
-//     scrollElement.value.scrollTop += scrollDirection * scrollSpeed;
-//
-//     // Check if we've reached the top or bottom of the scroll area
-//     if (scrollElement.value.scrollTop + scrollElement.value.clientHeight >= scrollElement.value.scrollHeight) {
-//         // We've reached the bottom, so start scrolling up
-//         scrollDirection = -1;
-//     } else if (scrollElement.value.scrollTop === 0) {
-//         // We've reached the top, so start scrolling down
-//         scrollDirection = 1;
-//     }
-// }
-//
 </script>
 <template>
     <div>
