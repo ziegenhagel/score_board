@@ -1,4 +1,8 @@
 import mongoose, {Schema} from "mongoose";
+import * as fs from "fs";
+
+const filename = "scores.json"
+
 
 const ScoreSchema = new Schema({
     name: String,
@@ -11,5 +15,14 @@ const ScoreSchema = new Schema({
 export const Score = mongoose.model('score', ScoreSchema)
 
 export default defineEventHandler(async (event) => {
-    return await Score.find().sort({score: -1}).limit(10).lean().exec()
+    // Read scores from file
+    let scores = [];
+    try {
+        const fileContent = await fs.readFileSync(filename, "utf8")
+        scores = JSON.parse(fileContent);
+    } catch (error) {
+        console.error("Error reading scores file:", error);
+    }
+
+    return scores
 })
