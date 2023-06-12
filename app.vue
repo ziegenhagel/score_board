@@ -49,7 +49,7 @@
     width: 8vw;
     height: 12.5vh;
     padding: 1vw;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     text-align: center;
     display: flex;
     justify-content: center;
