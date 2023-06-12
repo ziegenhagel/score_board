@@ -1,3 +1,25 @@
+<script setup lang="ts">
+const scores = ref([])
+const refreshScores = () => {
+    const url = "api/scores"
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            scores.value = data
+        })
+        .catch(error => {
+            console.error(error)
+        })
+}
+onMounted(() => {
+    refreshScores()
+    // setInterval(refreshScores, 5000)
+})
+
+const otherScores = computed(() => {
+    return scores.value.slice(8)
+})
+</script>
 <template>
     <div>
         <img src="score_board_empty.png" alt="score_board_empty" id="score_board_empty">
@@ -5,41 +27,36 @@
             <div class="col" id="left">
                 <div class="triangle" id="first" style="margin:auto;margin-top:25vh;justify-content: center;">
                     1. PLATZ<br/>
-                    momenik<br/>
-                    7643
+                    {{ scores?.[0]?.name }}<br/>
+                    {{ scores?.[0]?.score }}
                 </div>
                 <div class="row" style="justify-content: center;">
                     <div class="triangle" id="second">
-                        1. PLATZ<br/>
-                        momenik<br/>
-                        7643
+                        2. PLATZ<br/>
+                        {{ scores?.[1]?.name }}<br/>
+                        {{ scores?.[1]?.score }}
                     </div>
                     <div class="triangle" id="third">
-                        1. PLATZ<br/>
-                        momenik<br/>
-                        7643
+                        3. PLATZ<br/>
+                        {{ scores?.[2]?.name }}<br/>
+                        {{ scores?.[2]?.score }}
                     </div>
                 </div>
                 <div class="other-places">
-                    <div class="row" v-for="i in 5">
-                        <div class="place">{{ i }}.</div>
-                        <div class="name">username</div>
-                        <div class="score">{{ i * 123 }}</div>
+                    <div class="row" v-for="i in 5" :key="i">
+                        <div class="place">{{ i + 3 }}.</div>
+                        <div class="name">{{ scores?.[i + 3]?.name }}</div>
+                        <div class="score">{{ scores?.[i + 3]?.score }}</div>
                     </div>
                 </div>
             </div>
             <div class="col" id="right">
-                nothing here yet
-                nothing here yet
-                nothing here yet
-                nothing here yet
-                nothing here yet
-                nothing here yet
-                nothing here yet
-                nothing here yet
-                nothing here yet
-                nothing here yet
-                nothing here yet
+
+                <div class="row" v-for="(score, index) in otherScores" :key="score.name">
+                    <div class="place">{{ index + 8 }}.</div>
+                    <div class="name">{{ score.name }}</div>
+                    <div class="score">{{ score.score }}</div>
+                </div>
             </div>
         </main>
     </div>
@@ -80,6 +97,8 @@
     padding: 1em;
     box-sizing: border-box;
     right: 0;
+    height: 41vh;
+    overflow-y: auto;
 }
 
 main, #score_board_empty {
@@ -118,5 +137,3 @@ body, html {
     overflow: hidden;
 }
 </style>
-<script setup lang="ts">
-</script>

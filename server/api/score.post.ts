@@ -21,12 +21,20 @@ export default defineEventHandler(async (event) => {
     // Sort scores by score value in descending order
     scores.sort((a, b) => b.score - a.score);
 
+    // check which index the new score is at
+    const index = scores.findIndex((score) => score.score === body.score);
+
     // Write updated scores to file
     try {
         await fs.writeFileSync(filename, JSON.stringify(scores));
         console.log("Scores written to file successfully");
     } catch (error) {
         console.error("Error writing scores to file:", error);
+    }
+
+    return {
+        scores,
+        index,
     }
 
 })
