@@ -13,12 +13,55 @@ const refreshScores = () => {
 }
 onMounted(() => {
     refreshScores()
-    // setInterval(refreshScores, 5000)
+    setInterval(refreshScores, 5000)
+
+    function scrollStep() {
+        if (!scrollElement.value) return;
+
+        // Scroll the element
+        scrollElement.value.scrollTop += scrollDirection * scrollSpeed;
+
+        // Check if we've reached the top or bottom of the scroll area
+        if (scrollElement.value.scrollTop + scrollElement.value.clientHeight >= scrollElement.value.scrollHeight) {
+            // We've reached the bottom, so start scrolling up
+            scrollDirection = -1;
+        } else if (scrollElement.value.scrollTop === 0) {
+            // We've reached the top, so start scrolling down
+            scrollDirection = 1;
+        }
+
+        // Request the next frame
+        window.requestAnimationFrame(scrollStep);
+    }
+
+    // Start the animation
+    scrollStep();
 })
 
 const otherScores = computed(() => {
     return scores.value.slice(8)
 })
+
+// autoscrolling
+let scrollDirection = 1;
+let scrollSpeed = 1;  // pixels per second
+const scrollElement = ref(null);
+// const scrollTick = () => {
+//     if (!scrollElement.value) return;
+//
+//     // Scroll the element
+//     scrollElement.value.scrollTop += scrollDirection * scrollSpeed;
+//
+//     // Check if we've reached the top or bottom of the scroll area
+//     if (scrollElement.value.scrollTop + scrollElement.value.clientHeight >= scrollElement.value.scrollHeight) {
+//         // We've reached the bottom, so start scrolling up
+//         scrollDirection = -1;
+//     } else if (scrollElement.value.scrollTop === 0) {
+//         // We've reached the top, so start scrolling down
+//         scrollDirection = 1;
+//     }
+// }
+//
 </script>
 <template>
     <div>
@@ -50,8 +93,7 @@ const otherScores = computed(() => {
                     </div>
                 </div>
             </div>
-            <div class="col" id="right">
-
+            <div class="col" id="right" ref="scrollElement">
                 <div class="row" v-for="(score, index) in otherScores" :key="score.name">
                     <div class="place">{{ index + 8 }}.</div>
                     <div class="name">{{ score.name }}</div>
@@ -95,6 +137,7 @@ const otherScores = computed(() => {
     width: 55vw;
     margin-top: 59vh;
     padding: 1em;
+    /*transition: all 1s;*/
     box-sizing: border-box;
     right: 0;
     height: 41vh;
