@@ -102,8 +102,14 @@ const scrollElement = ref(null);
 }
 
 .triangle h2 {
+  text-transform: uppercase;
   margin: 0;
   padding: 0;
+}
+
+.name{
+  text-transform: uppercase;
+
 }
 
 #left, #right {
