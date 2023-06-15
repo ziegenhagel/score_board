@@ -40,7 +40,7 @@ onMounted(() => {
 })
 
 const otherScores = computed(() => {
-  return scores.value.slice(8)
+  return scores.value.slice(10)
 })
 
 // autoscrolling
@@ -55,23 +55,23 @@ const scrollElement = ref(null);
       <div class="col" id="left">
         <div class="triangle" id="first" style="margin:auto;margin-top:25vh;justify-content: center;">
           1. PLATZ<br/>
-          {{ scores?.[0]?.name }}<br/>
+          <h2>{{ scores?.[0]?.name }}</h2>
           {{ scores?.[0]?.score }}
         </div>
         <div class="row" style="justify-content: center;">
           <div class="triangle" id="second">
             2. PLATZ<br/>
-            {{ scores?.[1]?.name }}<br/>
+            <h2>{{ scores?.[1]?.name }}</h2>
             {{ scores?.[1]?.score }}
           </div>
           <div class="triangle" id="third">
             3. PLATZ<br/>
-            {{ scores?.[2]?.name }}<br/>
+            <h2>{{ scores?.[2]?.name }}</h2>
             {{ scores?.[2]?.score }}
           </div>
         </div>
         <div class="other-places">
-          <div class="row" v-for="i in 5" :key="i">
+          <div class="row" v-for="i in 7" :key="i">
             <div class="place">{{ i + 3 }}.</div>
             <div class="name">{{ scores?.[i + 3]?.name }}</div>
             <div class="score">{{ scores?.[i + 3]?.score }}</div>
@@ -80,7 +80,7 @@ const scrollElement = ref(null);
       </div>
       <div class="col" id="right" ref="scrollElement">
         <div class="row" v-for="(score, index) in otherScores" :key="score">
-          <div class="place">{{ index + 8 }}.</div>
+          <div class="place">{{ index + 11 }}.</div>
           <div class="name">{{ score.name }}</div>
           <div class="score">{{ score.score }}</div>
         </div>
@@ -96,8 +96,14 @@ const scrollElement = ref(null);
   /*border: 1px solid black;*/
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.triangle h2 {
+  margin: 0;
+  padding: 0;
 }
 
 #left, #right {
