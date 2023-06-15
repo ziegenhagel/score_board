@@ -104,12 +104,14 @@ const scrollElement = ref(null);
 .triangle h2 {
   text-transform: uppercase;
   margin: 0;
+  letter-spacing: 1px;
+  font-family: "Open Sans Bold", sans-serif;
+  font-size: 1.15em;
   padding: 0;
 }
 
-.name{
+.name {
   text-transform: uppercase;
-
 }
 
 #left, #right {
@@ -181,6 +183,12 @@ main, #score_board_empty {
 @font-face {
   font-family: "Open Sans Condensed";
   src: url("OpenSansCondensed-Light.ttf");
+}
+
+
+@font-face {
+  font-family: "Open Sans Bold";
+  src: url("OpenSans-CondBold.ttf");
 }
 
 body, html {
