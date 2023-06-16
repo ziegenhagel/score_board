@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
 
     // check if String USERNAME_VALID is in response
     if (!response.choices[0].text.includes('USERNAME_VALID')) {
-        return {error: 'Username is considered inappropriate.', success: false}
+        return {error: 'Username is considered inappropriate.', success: false, response}
     }
 
     // Add new score to database
@@ -43,5 +43,6 @@ export default defineEventHandler(async (event) => {
         success: true,
         scores,
         index,
+        response
     }
 })
