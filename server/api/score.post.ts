@@ -1,40 +1,28 @@
-import {Score} from "./scores.get";
-import * as fs from "fs";
-
-const filename = "scores.json"
+import ScoreModel from "./scores.model";
+import mongoose from "mongoose";
 
 export default defineEventHandler(async (event) => {
+
+
+    console.log("Connecting to MongoDB...");
+    await mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
+
     const body = await readBody(event)
 
-    // Read scores from file
-    let scores = [];
-    try {
-        const fileContent = await fs.readFileSync(filename, "utf8")
-        scores = JSON.parse(fileContent);
-    } catch (error) {
-        console.error("Error reading scores file:", error);
-    }
+    // Add new score to database
+    let newScore = new ScoreModel(body);
+    newScore = await newScore.save();
 
-    // Add new score to scores array
-    scores.push(body);
+    // Get all scores
+    const scores = await ScoreModel.find({}).sort({score: 'desc'}); // Sort scores in descending order
 
-    // Sort scores by score value in descending order
-    scores.sort((a, b) => b.score - a.score);
-
-    // check which index the new score is at
+    // Check which index the new score is at
     const index = scores.findIndex((score) => score.score === body.score);
 
-    // Write updated scores to file
-    try {
-        await fs.writeFileSync(filename, JSON.stringify(scores));
-        console.log("Scores written to file successfully");
-    } catch (error) {
-        console.error("Error writing scores to file:", error);
-    }
+    mongoose.connection.close();
 
     return {
         scores,
         index,
     }
-
 })

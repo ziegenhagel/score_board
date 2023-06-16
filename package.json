@@ -14,6 +14,8 @@
     "nuxt": "^3.5.2"
   },
   "dependencies": {
+    "@tensorflow-models/toxicity": "^1.2.2",
+    "@tensorflow/tfjs": "^4.7.0",
     "mongoose": "^7.2.4"
   }
 }
