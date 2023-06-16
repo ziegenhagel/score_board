@@ -27,7 +27,11 @@ export default defineEventHandler(async (event) => {
         });
         console.log(completion.data.choices[0].text);
         if (!completion.data.choices[0].text.includes('USERNAME_VALID')) {
-            return {error: 'Username is considered inappropriate.', success: false, response: completion.data.choices[0].text}
+            return {
+                success: false,
+                error: 'Username is considered inappropriate.',
+                response: completion.data.choices[0].text
+            }
         }
     } catch (error) {
         if (error.response) {
@@ -66,8 +70,6 @@ export default defineEventHandler(async (event) => {
 
     return {
         success: true,
-        scores,
-        index,
-        response
+        index
     }
 })
