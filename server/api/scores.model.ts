@@ -1,8 +1,11 @@
 import mongoose from 'mongoose';
 
 const ScoreSchema = new mongoose.Schema({
+    score: Number,
+    lines: Number,
+    level: Number,
+    time: String,
     username: String,
-    score: Number
 });
 
 const ScoreModel = mongoose.model('Score', ScoreSchema);
