@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
 
     try {
         const completion = await openai.createCompletion({
-            model: "text-davinci-003",
+            model: "text-ada-001",
             prompt: `Prüfe Username '${username}'. Ist er akzeptabel oder anstößig? Antworte mit eine der folgenden antworten: USERNAME_VALID oder USERNAME_BAN.`,
         });
         console.log(completion.data.choices[0].text);
