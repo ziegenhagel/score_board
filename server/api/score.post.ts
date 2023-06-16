@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
             model: "text-ada-001",
             prompt: `Prüfe Username '${username}'. Ist er akzeptabel oder anstößig? Antworte mit eine der folgenden antworten: USERNAME_VALID oder USERNAME_BAN.`,
         });
-        console.log(completion.data.choices[0].text);
+        console.log(completion.data.choices)
         if (!completion.data.choices[0].text.includes('USERNAME_VALID')) {
             return {
                 success: false,
