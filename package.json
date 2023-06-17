@@ -18,5 +18,8 @@
     "@tensorflow/tfjs": "^4.7.0",
     "mongoose": "^7.2.4",
     "openai": "^3.3.0"
-  }
+  },
+    "engines": {
+        "node": "16.x"
+    }
 }
