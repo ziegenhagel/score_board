@@ -50,7 +50,7 @@ const scrollElement = ref(null);
 </script>
 <template>
   <div>
-    <img src="score_board_empty.png" alt="score_board_empty" id="score_board_empty">
+    <img src="/score_board_empty.png" alt="score_board_empty" id="score_board_empty">
     <main>
       <div class="col" id="left">
         <div class="triangle" id="first" style="margin:auto;margin-top:25vh;justify-content: center;">
@@ -182,13 +182,13 @@ main, #score_board_empty {
 
 @font-face {
   font-family: "Open Sans Condensed";
-  src: url("OpenSansCondensed-Light.ttf");
+  src: url("/OpenSansCondensed-Light.ttf");
 }
 
 
 @font-face {
   font-family: "Open Sans Bold";
-  src: url("OpenSans-CondBold.ttf");
+  src: url("/OpenSans-CondBold.ttf");
 }
 
 body, html {
