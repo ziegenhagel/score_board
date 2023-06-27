@@ -1,25 +1,25 @@
 import ScoreModel from "./scores.model";
 import mongoose from "mongoose";
-import {Configuration, OpenAIApi} from "openai"
+//import {Configuration, OpenAIApi} from "openai"
 // import const { Configuration, OpenAIApi } = require("openai");
 
 export default defineEventHandler(async (event) => {
 
-    if (!process.env.OPENAI_API_KEY) {
+   /*    if (!process.env.OPENAI_API_KEY) {
         throw new Error("OPENAI_API_KEY environment variable is not set");
     }
 
-    const configuration = new Configuration({
+ const configuration = new Configuration({
         apiKey: process.env.OPENAI_API_KEY,
-    });
-    const openai = new OpenAIApi(configuration);
+    });*/
+//    const openai = new OpenAIApi(configuration);
 
     console.log("Connecting to MongoDB...");
     await mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
     const body = await readBody(event)
     const {username} = body
-
+/*
     try {
         const completion = await openai.createCompletion({
             model: "text-ada-001",
@@ -41,7 +41,7 @@ export default defineEventHandler(async (event) => {
             console.log(error.message);
         }
     }
-
+*/
     const response = {}
 
     //
