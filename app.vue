@@ -50,30 +50,30 @@ const scrollElement = ref(null);
 </script>
 <template>
   <div>
-    <img src="score_board_empty.png" alt="score_board_empty" id="score_board_empty">
+    <img src="/score_board_empty.png" alt="score_board_empty" id="score_board_empty">
     <main>
       <div class="col" id="left">
         <div class="triangle" id="first" style="margin:auto;margin-top:25vh;justify-content: center;">
           1. PLATZ<br/>
-          <h2>{{ scores?.[0]?.name }}</h2>
+          <h2>{{ scores?.[0]?.username }}</h2>
           {{ scores?.[0]?.score }}
         </div>
         <div class="row" style="justify-content: center;">
           <div class="triangle" id="second">
             2. PLATZ<br/>
-            <h2>{{ scores?.[1]?.name }}</h2>
+            <h2>{{ scores?.[1]?.username }}</h2>
             {{ scores?.[1]?.score }}
           </div>
           <div class="triangle" id="third">
             3. PLATZ<br/>
-            <h2>{{ scores?.[2]?.name }}</h2>
+            <h2>{{ scores?.[2]?.username }}</h2>
             {{ scores?.[2]?.score }}
           </div>
         </div>
         <div class="other-places">
           <div class="row" v-for="i in 7" :key="i">
             <div class="place">{{ i + 3 }}.</div>
-            <div class="name">{{ scores?.[i + 3]?.name }}</div>
+            <div class="name">{{ scores?.[i + 3]?.username }}</div>
             <div class="score">{{ scores?.[i + 3]?.score }}</div>
           </div>
         </div>
@@ -81,7 +81,7 @@ const scrollElement = ref(null);
       <div class="col" id="right" ref="scrollElement">
         <div class="row" v-for="(score, index) in otherScores" :key="score">
           <div class="place">{{ index + 11 }}.</div>
-          <div class="name">{{ score.name }}</div>
+          <div class="name">{{ score.username }}</div>
           <div class="score">{{ score.score }}</div>
         </div>
       </div>
@@ -182,13 +182,13 @@ main, #score_board_empty {
 
 @font-face {
   font-family: "Open Sans Condensed";
-  src: url("OpenSansCondensed-Light.ttf");
+  src: url("/OpenSansCondensed-Light.ttf");
 }
 
 
 @font-face {
   font-family: "Open Sans Bold";
-  src: url("OpenSans-CondBold.ttf");
+  src: url("/OpenSans-CondBold.ttf");
 }
 
 body, html {
