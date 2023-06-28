@@ -96,6 +96,8 @@ const scrollElement = ref(null);
         </div>
       </div>
     </main>
+
+    <img src="/score_board_empty_overlay.png" alt="score_board_empty" id="score_board_empty">
   </div>
 </template>
 <style>
