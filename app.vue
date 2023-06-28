@@ -15,7 +15,7 @@ const refreshScores = () => {
 // website should reload every 15 min
 setInterval(() => {
   window.location.reload()
-}, 15 * 60 * 1000)
+}, 20 * 60 * 1000)
 
 let timeoutScrolling = 0
 onMounted(() => {
