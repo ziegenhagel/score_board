@@ -90,10 +90,11 @@ const scrollElement = ref(null);
 </template>
 <style>
 .triangle {
-  width: 8vw;
-  height: 12.5vh;
+  width: 7.7vw;
+  height: 13.4vh;
   padding: 1vw;
   /*border: 1px solid black;*/
+  font-size: 35px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -102,17 +103,13 @@ const scrollElement = ref(null);
 }
 
 .triangle h2 {
-  text-transform: uppercase;
-  margin: 0;
+  margin: 3px;
   letter-spacing: 1px;
   font-family: "Open Sans Bold", sans-serif;
-  font-size: 1.15em;
+  font-size: 25px;
   padding: 0;
 }
 
-.name {
-  text-transform: uppercase;
-}
 
 #left, #right {
   height: 100vh;
@@ -178,6 +175,10 @@ main, #score_board_empty {
 .other-places {
   padding: 1em;
   margin-top: 14vh;
+}
+
+.row .name {
+  font-family: "Open Sans Bold", sans-serif;
 }
 
 @font-face {
