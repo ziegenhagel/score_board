@@ -168,12 +168,12 @@ const scrollElement = ref(null);
 
 
 #right {
-  width: 55vw;
+  width: 53vw;
   margin-top: 31vh;
 //margin-top: 59vh; padding: 1em; padding-top: 29vh;
   /*transition: all 1s;*/
   box-sizing: border-box;
-  right: 0;
+  right: 1vw;
   height: 70vh;
   line-height: 1.1em;
   overflow-y: auto;
@@ -247,5 +247,9 @@ body, html {
   margin: 0;
   padding: 0;
   overflow: hidden;
+}
+*{
+  user-select: none;
+  pointer-events: none;
 }
 </style>
