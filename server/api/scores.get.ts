@@ -15,18 +15,6 @@ export default defineEventHandler(async (event) => {
     }
 
 
-    //
-    // for (let i = 0; i < 50; i++) {
-    //     await ScoreModel.create({
-    //         score: Math.floor(Math.random() * 1000),
-    //         lines: 10,
-    //         level: 10,
-    //         time: '10:00',
-    //         // create random 5-10 char username
-    //         username: Math.random().toString(36).substring(5, 10)
-    //     })
-    // }
-
     // Don't forget to close the connection
     mongoose.connection.close();
 

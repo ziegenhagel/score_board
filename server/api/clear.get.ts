@@ -9,8 +9,18 @@ export default defineEventHandler(async (event) => {
     // delete all scores from database
     let scores = await ScoreModel.deleteMany({});
 
+    // inset a single score
+    // await ScoreModel.create({
+    //     score: 10,
+    //     lines: 10,
+    //     level: 10,
+    //     time: '10:00',
+    //     // create random 5-10 char username
+    //     username: 'Rainer Zufall'
+    // })
+    //
     // Don't forget to close the connection
     mongoose.connection.close();
 
-    return scores
+    return {success: true}
 })
