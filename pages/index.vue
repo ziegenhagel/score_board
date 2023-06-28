@@ -80,7 +80,7 @@ let scrollSpeed = 1;  // pixels per second
 const scrollElement = ref(null);
 </script>
 <template>
-  <div>
+  <div class="presentation">
     <img src="/score_board_empty.png" alt="score_board_empty" id="score_board_empty">
     <main>
       <div class="col" id="left">
@@ -248,7 +248,8 @@ body, html {
   padding: 0;
   overflow: hidden;
 }
-*{
+
+.presentation, .presentation * {
   user-select: none;
   pointer-events: none;
   cursor: none;
