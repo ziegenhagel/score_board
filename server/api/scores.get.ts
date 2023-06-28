@@ -17,5 +17,20 @@ export default defineEventHandler(async (event) => {
     // Don't forget to close the connection
     mongoose.connection.close();
 
+
+    // to mock some data return 50 times the same score
+    let scoresMock = []
+    for (let i = 0; i < 50; i++) {
+        scoresMock.push({
+            score: Math.floor(Math.random() * 1000),
+            lines: 10,
+            level: 10,
+            time: '10:00',
+            username: 'Thisdworks'
+        })
+    }
+    return scoresMock
+
+
     return scores
 })

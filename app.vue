@@ -12,6 +12,7 @@ const refreshScores = () => {
       })
 }
 
+let timeoutScrolling = 0
 onMounted(() => {
   refreshScores()
   setInterval(refreshScores, 5000)
@@ -20,7 +21,12 @@ onMounted(() => {
     if (!scrollElement.value) return;
 
     // Scroll the element
-    scrollElement.value.scrollTop += scrollDirection * scrollSpeed;
+    if (timeoutScrolling > 1) {
+      timeoutScrolling = 0
+      scrollElement.value.scrollTop += scrollDirection * scrollSpeed;
+    } else {
+      timeoutScrolling += 1
+    }
 
     // Check if we've reached the top or bottom of the scroll area
     if (scrollElement.value.scrollTop + scrollElement.value.clientHeight >= scrollElement.value.scrollHeight) {
@@ -35,7 +41,6 @@ onMounted(() => {
     window.requestAnimationFrame(scrollStep);
   }
 
-  // Start the animation
   scrollStep();
 })
 
@@ -91,10 +96,10 @@ const scrollElement = ref(null);
 <style>
 .triangle {
   width: 7.7vw;
-  height: 13.4vh;
+  height: 13.2vh;
   padding: 1vw;
   /*border: 1px solid black;*/
-  font-size: 35px;
+  font-size: 1.3em;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -103,10 +108,10 @@ const scrollElement = ref(null);
 }
 
 .triangle h2 {
-  margin: 3px;
+  margin: 0;
   letter-spacing: 1px;
   font-family: "Open Sans Bold", sans-serif;
-  font-size: 25px;
+  font-size: .7em;
   padding: 0;
 }
 
@@ -157,6 +162,9 @@ main, #score_board_empty {
   flex: 1;
 }
 
+* {
+  transition: .1s;
+}
 
 #right .row:nth-child(odd) {
   margin-right: 50px;
@@ -174,7 +182,7 @@ main, #score_board_empty {
 
 .other-places {
   padding: 1em;
-  margin-top: 14vh;
+  margin-top: 12vh;
 }
 
 .row .name {
@@ -193,7 +201,7 @@ main, #score_board_empty {
 }
 
 body, html {
-  font-size: 1.6em;
+  font-size: 1.2em;
   font-family: "Open Sans Condensed", sans-serif;
   font-weight: bolder;
   color: white;
