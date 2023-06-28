@@ -12,6 +12,27 @@ const refreshScores = () => {
       })
 }
 
+const eyesOpen = ref(true)
+
+// randomly blink every 5 to 15 seconds (blinking means closeing eyes twice for 0.1 seconds)
+const blink = () => {
+  eyesOpen.value = false
+  setTimeout(() => {
+    eyesOpen.value = true
+    setTimeout(() => {
+      eyesOpen.value = false
+      setTimeout(() => {
+        eyesOpen.value = true
+
+        // schedule next blink
+        setTimeout(blink, Math.random() * 10000 + 5000)
+      }, 100)
+    }, 100)
+  }, 100)
+}
+blink()
+
+
 // website should reload every 15 min
 setInterval(() => {
   window.location.reload()
@@ -34,7 +55,7 @@ onMounted(() => {
     }
 
     // Check if we've reached the top or bottom of the scroll area
-    if (scrollElement.value.scrollTop + scrollElement.value.clientHeight >= ( scrollElement.value.scrollHeight - 10)) {
+    if (scrollElement.value.scrollTop + scrollElement.value.clientHeight >= (scrollElement.value.scrollHeight - 10)) {
       // We've reached the bottom, so start scrolling up
       scrollDirection = -1;
     } else if (scrollElement.value.scrollTop === 0) {
@@ -98,9 +119,18 @@ const scrollElement = ref(null);
     </main>
 
     <img src="/score_board_empty_overlay.png" alt="score_board_empty" id="score_board_empty">
+    <img src="/eyes_open.png" v-if="eyesOpen" alt="eyes_open" class="eyes">
+    <img src="/eyes_close.png" v-else alt="eyes_closed" class="eyes">
   </div>
 </template>
 <style>
+.eyes {
+  position: absolute;
+  top: 21vh;
+  left: 39vw;
+  width: 4.3vw;
+}
+
 .triangle {
   width: 7.7vw;
   height: 13.2vh;
@@ -140,9 +170,7 @@ const scrollElement = ref(null);
 #right {
   width: 55vw;
   margin-top: 31vh;
-  //margin-top: 59vh;
-  padding: 1em;
-  padding-top: 29vh;
+//margin-top: 59vh; padding: 1em; padding-top: 29vh;
   /*transition: all 1s;*/
   box-sizing: border-box;
   right: 0;
