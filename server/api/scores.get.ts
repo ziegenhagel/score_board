@@ -14,23 +14,21 @@ export default defineEventHandler(async (event) => {
         console.error("Error reading scores from database:", error);
     }
 
-    // Don't forget to close the connection
-    mongoose.connection.close();
 
-
-    // to mock some data return 50 times the same score
-    // let scoresMock = []
+    //
     // for (let i = 0; i < 50; i++) {
-    //     scoresMock.push({
+    //     await ScoreModel.create({
     //         score: Math.floor(Math.random() * 1000),
     //         lines: 10,
     //         level: 10,
     //         time: '10:00',
-    //         username: 'Thisdworks'
+    //         // create random 5-10 char username
+    //         username: Math.random().toString(36).substring(5, 10)
     //     })
     // }
-    // return scoresMock
-    //
+
+    // Don't forget to close the connection
+    mongoose.connection.close();
 
     return scores
 })
