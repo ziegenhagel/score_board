@@ -34,7 +34,7 @@ onMounted(() => {
     }
 
     // Check if we've reached the top or bottom of the scroll area
-    if (scrollElement.value.scrollTop + scrollElement.value.clientHeight >= scrollElement.value.scrollHeight) {
+    if (scrollElement.value.scrollTop + scrollElement.value.clientHeight >= ( scrollElement.value.scrollHeight - 10)) {
       // We've reached the bottom, so start scrolling up
       scrollDirection = -1;
     } else if (scrollElement.value.scrollTop === 0) {
@@ -137,12 +137,15 @@ const scrollElement = ref(null);
 
 #right {
   width: 55vw;
-  margin-top: 59vh;
+  margin-top: 31vh;
+  //margin-top: 59vh;
   padding: 1em;
+  padding-top: 29vh;
   /*transition: all 1s;*/
   box-sizing: border-box;
   right: 0;
-  height: 41vh;
+  height: 70vh;
+  line-height: 1.1em;
   overflow-y: auto;
 }
 
@@ -188,6 +191,7 @@ main, #score_board_empty {
 .other-places {
   padding: 1em;
   margin-top: 12vh;
+  line-height: 1.2em;
 }
 
 .row .name {
