@@ -220,8 +220,8 @@ main, #score_board_empty {
 
 .other-places {
   padding: 1em;
-  margin-top: 12vh;
-  line-height: 1.2em;
+  margin-top: 11.4vh;
+  line-height: 1.15em;
 }
 
 .row .name {
@@ -251,5 +251,6 @@ body, html {
 *{
   user-select: none;
   pointer-events: none;
+  cursor: none;
 }
 </style>
