@@ -104,14 +104,14 @@ const scrollElement = ref(null);
         <div class="other-places">
           <div class="row" v-for="i in 7" :key="i">
             <div class="place">{{ i + 3 }}.</div>
-            <div class="name">{{ scores?.[i + 3]?.username }}</div>
-            <div class="score">{{ scores?.[i + 3]?.score }}</div>
+            <div class="name">{{ scores?.[i + 2]?.username }}</div>
+            <div class="score">{{ scores?.[i + 2]?.score }}</div>
           </div>
         </div>
       </div>
       <div class="col" id="right" ref="scrollElement">
         <div class="row" v-for="(score, index) in otherScores" :key="score">
-          <div class="place">{{ index + 11 }}.</div>
+          <div class="place">{{ index + 10 }}.</div>
           <div class="name">{{ score.username }}</div>
           <div class="score">{{ score.score }}</div>
         </div>
